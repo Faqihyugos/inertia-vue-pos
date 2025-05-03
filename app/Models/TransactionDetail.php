@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class TransactionDetail extends Model
+{
+     /**
+     * fillable
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'transaction_id', 'product_id', 'qty', 'price'
+    ];
+
+     /**
+     * transaction
+     *
+     * @return void
+     */
+    public function transaction() : BelongsTo
+    {
+        return $this->belongsTo(Transaction::class);
+    }
+
+    /**
+     * product
+     *
+     * @return void
+     */
+    public function product() : BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+}
